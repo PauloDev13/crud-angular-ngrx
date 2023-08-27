@@ -1,0 +1,84 @@
+{
+  "associates": [
+    {
+      "id": 1,
+      "name": "Paulo Roberto",
+      "email": "prmorais@gmail.com",
+      "phone": "84987015549",
+      "type": "COSTUMER",
+      "address": "Parque Paraúna",
+      "associateGroup": "level1",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "Maria Fernanda",
+      "email": "nanda@gmail.com",
+      "phone": "84987015549",
+      "type": "COSTUMER",
+      "address": "Parque Paraúna",
+      "associateGroup": "level1",
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "Patrícia Nunes",
+      "email": "patricia@gmail.com",
+      "phone": "84987015549",
+      "type": "COSTUMER",
+      "address": "Parque Paraúna",
+      "associateGroup": "level1",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "Diogo Gomes",
+      "email": "diogo@gmail.com",
+      "phone": "84987015549",
+      "type": "COSTUMER",
+      "address": "Parque Paraúna",
+      "associateGroup": "level1",
+      "status": true
+    },
+    {
+      "id": 5,
+      "name": "Ana Paula",
+      "email": "ana@gmail.com",
+      "phone": "84987015549",
+      "type": "COSTUMER",
+      "address": "Parque Paraúna",
+      "associateGroup": "level1",
+      "status": true
+    },
+    {
+      "id": 6,
+      "name": "Polliana Éricka",
+      "email": "prmorais@gmail.com",
+      "phone": "84987015549",
+      "type": "COSTUMER",
+      "address": "Parque Paraúna",
+      "associateGroup": "level1",
+      "status": true
+    },
+    {
+      "id": 7,
+      "name": "Paulo Ricardo",
+      "email": "prmorais@gmail.com",
+      "phone": "84987015549",
+      "type": "COSTUMER",
+      "address": "Parque Paraúna",
+      "associateGroup": "level1",
+      "status": true
+    },
+    {
+      "id": 8,
+      "name": "Ana Priscila",
+      "email": "anapri@gmail.com",
+      "phone": "8498562324",
+      "associateGroup": "level1",
+      "address": "Rua Teste",
+      "type": "COSTUMER",
+      "status": true
+    }
+  ]
+}

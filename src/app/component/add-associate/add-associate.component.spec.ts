@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssociateComponent } from './associate.component';
+import { AddAssociateComponent } from './add-associate.component';
 
 describe('AssociateComponent', () => {
-  let component: AssociateComponent;
-  let fixture: ComponentFixture<AssociateComponent>;
+  let component: AddAssociateComponent;
+  let fixture: ComponentFixture<AddAssociateComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AssociateComponent],
+      declarations: [AddAssociateComponent],
     });
-    fixture = TestBed.createComponent(AssociateComponent);
+    fixture = TestBed.createComponent(AddAssociateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

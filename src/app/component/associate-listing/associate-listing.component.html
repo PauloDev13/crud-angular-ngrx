@@ -1,1 +1,77 @@
-<p>associate-listing works!</p>
+<mat-card class="mdc-card">
+  <mat-card-header>
+    <h1>Associate listing</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="code">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
+        <mat-cell *matCellDef="let associate"> {{ associate.id }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+        <mat-cell *matCellDef="let associate"> {{ associate.name }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+        <mat-cell *matCellDef="let associate"> {{ associate.email }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef>Fone</mat-header-cell>
+        <mat-cell *matCellDef="let associate"> {{ associate.phone }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef>Endereço</mat-header-cell>
+        <mat-cell *matCellDef="let associate"> {{ associate.address }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+        <mat-cell *matCellDef="let associate"> {{ associate.type }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="associateGroup">
+        <mat-header-cell *matHeaderCellDef>Grupo</mat-header-cell>
+        <mat-cell *matCellDef="let associate"> {{ associate.associateGroup }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+        <mat-cell *matCellDef="let associate"> {{ associate.status === true ? 'Ativo' : 'Inativo' }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="action-column">
+          <button (click)="functionAdd()"
+                  aria-label="Adicionar um associado"
+                  class="action-column-header"
+                  color="primary"
+                  mat-mini-fab>
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let associate" class="action-column">
+          <button aria-label="Editar associado" color="primary" mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button aria-label="Remover associado" color="warn" mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <br/>
+  <mat-card-footer>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  </mat-card-footer>
+</mat-card>

@@ -62,7 +62,7 @@ export class AssociateEffects {
       ofType(addAssociate),
       switchMap(action => {
         return this.associateService.create(action.inputData).pipe(
-          switchMap(data => {
+          switchMap(() => {
             return of(
               addAssociateSuccess({ inputData: action.inputData }),
               showAlert({
@@ -89,7 +89,7 @@ export class AssociateEffects {
       ofType(updateAssociate),
       switchMap(action => {
         return this.associateService.update(action.inputData).pipe(
-          switchMap(data => {
+          switchMap(() => {
             return of(
               updateAssociateSuccess({ inputData: action.inputData }),
               showAlert({
@@ -116,7 +116,7 @@ export class AssociateEffects {
       ofType(removeAssociate),
       switchMap(action => {
         return this.associateService.remove(action.code).pipe(
-          switchMap(data => {
+          switchMap(() => {
             return of(
               removeAssociateSuccess({ code: action.code }),
               showAlert({

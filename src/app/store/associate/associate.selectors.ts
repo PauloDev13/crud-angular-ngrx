@@ -2,12 +2,15 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { AssociateModel } from '../model/associate.model';
 
-const getAssociateState = createFeatureSelector<AssociateModel>('associate');
+const selectAssociateState = createFeatureSelector<AssociateModel>('associate');
 
-export const getAssociateList = createSelector(getAssociateState, state => {
-  return state.list;
-});
+export const selectAssociateList = createSelector(
+  selectAssociateState,
+  state => {
+    return state.list;
+  },
+);
 
-export const getAssociate = createSelector(getAssociateState, state => {
+export const selectAssociate = createSelector(selectAssociateState, state => {
   return state.associateObject;
 });

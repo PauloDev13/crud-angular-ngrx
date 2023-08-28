@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { tap } from 'rxjs';
 
 import { Associate } from '../../store/model/associate.model';
 
@@ -13,32 +12,22 @@ export class AssociateService {
   private readonly httpClient = inject(HttpClient);
 
   getAll() {
-    return this.httpClient
-      .get<Associate[]>(this.baseUrl)
-      .pipe(tap(() => console.log('GetAll Associates')));
+    return this.httpClient.get<Associate[]>(this.baseUrl);
   }
 
   getByCode(code: number) {
-    return this.httpClient
-      .get<Associate>(`${this.baseUrl}/${code}`)
-      .pipe(tap(() => console.log('GetByCode Associate')));
+    return this.httpClient.get<Associate>(`${this.baseUrl}/${code}`);
   }
 
   remove(code: number) {
-    return this.httpClient
-      .delete<void>(`${this.baseUrl}/${code}`)
-      .pipe(tap(() => console.log('Removed')));
+    return this.httpClient.delete<void>(`${this.baseUrl}/${code}`);
   }
 
   update(data: Associate) {
-    return this.httpClient
-      .put<Associate>(`${this.baseUrl}/${data.id}`, data)
-      .pipe(tap(() => console.log('Update Associate')));
+    return this.httpClient.put<Associate>(`${this.baseUrl}/${data.id}`, data);
   }
 
   create(data: Associate) {
-    return this.httpClient
-      .post<Associate>(this.baseUrl, data)
-      .pipe(tap(() => console.log('Create Associate')));
+    return this.httpClient.post<Associate>(this.baseUrl, data);
   }
 }

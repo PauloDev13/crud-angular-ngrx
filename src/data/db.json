@@ -2,11 +2,11 @@
   "associates": [
     {
       "id": 1,
-      "name": "Paulo Roberto de Morais",
+      "name": "Paulo Roberto",
       "email": "prmorais@gmail.com",
       "phone": "84987015549",
       "associateGroup": "level1",
-      "address": "Parque Paraúna",
+      "address": "Parque Paraúna, 79",
       "type": "COSTUMER",
       "status": true
     },
@@ -65,9 +65,9 @@
       "name": "Ana Priscila",
       "email": "anapri@gmail.com",
       "phone": "8498562324",
-      "associateGroup": "level1",
+      "associateGroup": "level3",
       "address": "Rua Teste",
-      "type": "COSTUMER",
+      "type": "SUPPLIER",
       "status": true
     }
   ]

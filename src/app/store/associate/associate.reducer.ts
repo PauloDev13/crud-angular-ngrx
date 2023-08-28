@@ -1,5 +1,6 @@
-import { createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
+import { AssociateModel } from '../model/associate.model';
 import {
   addAssociateSuccess,
   getAssociateSuccess,
@@ -11,9 +12,9 @@ import {
 } from './associate.action';
 import { associateState } from './associate.state';
 
-const _associateReducer = createReducer(
+const _associateReducer = createReducer<AssociateModel>(
   associateState,
-  on(loadAssociateSuccess, (state, action) => {
+  on(loadAssociateSuccess, (state, action): AssociateModel => {
     return {
       ...state,
       list: [...action.list],
@@ -21,7 +22,7 @@ const _associateReducer = createReducer(
     };
   }),
 
-  on(getAssociateSuccess, (state, action) => {
+  on(getAssociateSuccess, (state, action): AssociateModel => {
     return {
       ...state,
       associateObject: action.obj,
@@ -29,7 +30,7 @@ const _associateReducer = createReducer(
     };
   }),
 
-  on(addAssociateSuccess, (state, action) => {
+  on(addAssociateSuccess, (state, action): AssociateModel => {
     const _maxId = Math.max(...state.list.map(item => item.id));
     const _newData = { ...action.inputData };
     _newData.id = _maxId + 1;
@@ -40,7 +41,7 @@ const _associateReducer = createReducer(
     };
   }),
 
-  on(updateAssociateSuccess, (state, action) => {
+  on(updateAssociateSuccess, (state, action): AssociateModel => {
     const _newData = state.list.map(obj => {
       return obj.id === action.inputData.id ? action.inputData : obj;
     });
@@ -51,7 +52,7 @@ const _associateReducer = createReducer(
     };
   }),
 
-  on(removeAssociateSuccess, (state, action) => {
+  on(removeAssociateSuccess, (state, action): AssociateModel => {
     const _newData = state.list.filter(obj => obj.id !== action.code);
     return {
       ...state,
@@ -60,7 +61,7 @@ const _associateReducer = createReducer(
     };
   }),
 
-  on(loadAssociateFail, (state, action) => {
+  on(loadAssociateFail, (state, action): AssociateModel => {
     return {
       ...state,
       list: [],
@@ -68,7 +69,7 @@ const _associateReducer = createReducer(
     };
   }),
 
-  on(openPopup, (state, action) => {
+  on(openPopup, (state): AssociateModel => {
     return {
       ...state,
       associateObject: {
@@ -85,6 +86,9 @@ const _associateReducer = createReducer(
   }),
 );
 
-export function AssociateReducer(state: any, action: any) {
+export function AssociateReducer(
+  state: AssociateModel | undefined,
+  action: Action,
+) {
   return _associateReducer(state, action);
 }

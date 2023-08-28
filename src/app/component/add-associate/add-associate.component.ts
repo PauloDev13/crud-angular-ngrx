@@ -7,8 +7,12 @@ import {
   addAssociate,
   updateAssociate,
 } from '../../store/associate/associate.action';
-import { getAssociate } from '../../store/associate/associate.selectors';
+import { selectAssociate } from '../../store/associate/associate.selectors';
 import { Associate } from '../../store/model/associate.model';
+
+type typeDialogData = {
+  title: string;
+};
 
 @Component({
   selector: 'app-add-associate',
@@ -18,7 +22,7 @@ import { Associate } from '../../store/model/associate.model';
 export class AddAssociateComponent implements OnInit {
   title = 'Create Associate';
   isEdit = false;
-  dialogData: any;
+  dialogData!: typeDialogData;
 
   associateForm = this.formBuilder.group({
     id: this.formBuilder.control(0, Validators.required),
@@ -37,7 +41,7 @@ export class AddAssociateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ref: MatDialogRef<AddAssociateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: typeDialogData,
     private store: Store,
   ) {}
 
@@ -70,17 +74,20 @@ export class AddAssociateComponent implements OnInit {
   ngOnInit(): void {
     this.dialogData = this.data;
     this.title = this.data.title;
-    this.store.select(getAssociate).subscribe(result => {
-      this.associateForm.patchValue({
-        id: result.id,
-        name: result.name,
-        email: result.email,
-        phone: result.phone,
-        address: result.address,
-        type: result.type,
-        group: result.associateGroup,
-        status: result.status,
-      });
+    const selectedItems$ = this.store.select(selectAssociate);
+    selectedItems$.subscribe({
+      next: value => {
+        this.associateForm.patchValue({
+          id: value.id,
+          name: value.name,
+          email: value.email,
+          phone: value.phone,
+          address: value.address,
+          type: value.type,
+          group: value.associateGroup,
+          status: value.status,
+        });
+      },
     });
   }
 }

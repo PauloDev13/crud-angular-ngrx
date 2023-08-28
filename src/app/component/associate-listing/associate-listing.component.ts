@@ -11,7 +11,7 @@ import {
   openPopup,
   removeAssociate,
 } from '../../store/associate/associate.action';
-import { getAssociateList } from '../../store/associate/associate.selectors';
+import { selectAssociateList } from '../../store/associate/associate.selectors';
 import { Associate } from '../../store/model/associate.model';
 import { AddAssociateComponent } from '../add-associate/add-associate.component';
 
@@ -23,7 +23,7 @@ import { AddAssociateComponent } from '../add-associate/add-associate.component'
 export class AssociateListingComponent implements OnInit {
   // associateList$: Observable<Associate[]> = of([]);
   associateList: Associate[] = [];
-  dataSource!: any;
+  dataSource!: MatTableDataSource<Associate>;
   displayedColumns = [
     'code',
     'name',
@@ -44,9 +44,9 @@ export class AssociateListingComponent implements OnInit {
   constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    // this.associateList$ = this.store.select(getAssociateList);
+    const associateList$ = this.store.select(selectAssociateList);
     this.store.dispatch(loadAssociate());
-    this.store.select(getAssociateList).subscribe({
+    associateList$.subscribe({
       next: data => {
         this.associateList = data;
         this.dataSource = new MatTableDataSource<Associate>(this.associateList);

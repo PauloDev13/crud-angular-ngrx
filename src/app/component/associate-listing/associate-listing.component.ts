@@ -60,15 +60,15 @@ export class AssociateListingComponent implements OnInit {
     this.openPopUp(0, 'Create Associate');
   }
 
+  functionEdit(code: number) {
+    this.openPopUp(code, 'Updated Associate');
+    this.store.dispatch(getAssociate({ code }));
+  }
+
   functionRemove(code: number) {
     if (confirm('Remover Associado com ID: ' + code)) {
       this.store.dispatch(removeAssociate({ code }));
     }
-  }
-
-  functionEdit(code: number) {
-    this.openPopUp(code, 'Updated Associate');
-    this.store.dispatch(getAssociate({ code }));
   }
 
   openPopUp(code: number, title: string) {

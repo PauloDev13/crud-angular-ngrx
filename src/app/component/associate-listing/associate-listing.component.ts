@@ -5,7 +5,12 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 
-import { loadAssociate } from '../../store/associate/associate.action';
+import {
+  getAssociate,
+  loadAssociate,
+  openPopup,
+  removeAssociate,
+} from '../../store/associate/associate.action';
 import { getAssociateList } from '../../store/associate/associate.selectors';
 import { Associate } from '../../store/model/associate.model';
 import { AddAssociateComponent } from '../add-associate/add-associate.component';
@@ -55,7 +60,19 @@ export class AssociateListingComponent implements OnInit {
     this.openPopUp(0, 'Create Associate');
   }
 
+  functionRemove(code: number) {
+    if (confirm('Remover Associado com ID: ' + code)) {
+      this.store.dispatch(removeAssociate({ code }));
+    }
+  }
+
+  functionEdit(code: number) {
+    this.openPopUp(code, 'Updated Associate');
+    this.store.dispatch(getAssociate({ code }));
+  }
+
   openPopUp(code: number, title: string) {
+    this.store.dispatch(openPopup());
     this.dialog.open(AddAssociateComponent, {
       width: '50%',
       enterAnimationDuration: '300ms',

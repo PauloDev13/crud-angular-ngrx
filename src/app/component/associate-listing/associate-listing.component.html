@@ -56,11 +56,11 @@
         </mat-header-cell>
 
         <mat-cell *matCellDef="let associate" class="action-column">
-          <button aria-label="Editar associado" color="primary" mat-icon-button>
+          <button (click)="functionEdit(associate.id)" aria-label="Editar associado" color="primary" mat-icon-button>
             <mat-icon>edit</mat-icon>
           </button>
 
-          <button aria-label="Remover associado" color="warn" mat-icon-button>
+          <button (click)="functionRemove(associate.id)" aria-label="Remover associado" color="warn" mat-icon-button>
             <mat-icon>delete</mat-icon>
           </button>
         </mat-cell>

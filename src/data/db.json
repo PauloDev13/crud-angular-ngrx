@@ -2,32 +2,22 @@
   "associates": [
     {
       "id": 1,
-      "name": "Paulo Roberto",
+      "name": "Paulo Roberto de Morais",
       "email": "prmorais@gmail.com",
       "phone": "84987015549",
-      "type": "COSTUMER",
-      "address": "Parque Paraúna",
       "associateGroup": "level1",
+      "address": "Parque Paraúna",
+      "type": "COSTUMER",
       "status": true
     },
     {
       "id": 2,
-      "name": "Maria Fernanda",
+      "name": "Maria Fernanda Nunes",
       "email": "nanda@gmail.com",
       "phone": "84987015549",
-      "type": "COSTUMER",
-      "address": "Parque Paraúna",
       "associateGroup": "level1",
-      "status": true
-    },
-    {
-      "id": 3,
-      "name": "Patrícia Nunes",
-      "email": "patricia@gmail.com",
-      "phone": "84987015549",
-      "type": "COSTUMER",
       "address": "Parque Paraúna",
-      "associateGroup": "level1",
+      "type": "COSTUMER",
       "status": true
     },
     {

@@ -3,7 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
-import { addAssociate } from '../../store/associate/associate.action';
+import {
+  addAssociate,
+  updateAssociate,
+} from '../../store/associate/associate.action';
+import { getAssociate } from '../../store/associate/associate.selectors';
 import { Associate } from '../../store/model/associate.model';
 
 @Component({
@@ -54,7 +58,11 @@ export class AddAssociateComponent implements OnInit {
         status: this.associateForm.value.status as boolean,
       };
 
-      this.store.dispatch(addAssociate({ inputData: _obj }));
+      if (_obj.id === 0) {
+        this.store.dispatch(addAssociate({ inputData: _obj }));
+      } else {
+        this.store.dispatch(updateAssociate({ inputData: _obj }));
+      }
       this.closePopup();
     }
   }
@@ -62,5 +70,17 @@ export class AddAssociateComponent implements OnInit {
   ngOnInit(): void {
     this.dialogData = this.data;
     this.title = this.data.title;
+    this.store.select(getAssociate).subscribe(result => {
+      this.associateForm.patchValue({
+        id: result.id,
+        name: result.name,
+        email: result.email,
+        phone: result.phone,
+        address: result.address,
+        type: result.type,
+        group: result.associateGroup,
+        status: result.status,
+      });
+    });
   }
 }
